@@ -2,7 +2,7 @@ const dotenv = require("dotenv");
 dotenv.config({ path: "./config.env" });
 const http = require("http");
 const TelegramBot = require("node-telegram-bot-api");
-let imagesdata;
+
 const bot = new TelegramBot("6468514456:AAFBsZLpkcW-Cce9QvzaIom5eh1IwVXw6n4", {
   polling: true,
 });
@@ -13,25 +13,13 @@ const images = async (imageName) => {
   );
   const jsonData = await imagedata.json();
   const links = jsonData.images_results.map((doc) => doc.original);
-  imagesdata = links;
-
   return links;
 };
 
-let message;
+
 bot.on("message", async (msg) => {
   const chatId = msg.chat.id;
-  let image;
-
-  if (msg.text.toLocaleLowerCase() !== message) {
-    image = await images(msg.text);
-    message = msg.text.toLocaleLowerCase();
-  } else {
-    image = imagesdata;
-  }
-
-  console.log();
-
+  const image = await images(msg.text);
   if (msg.text !== "/start") {
     for (let i = 0; i < 5; i++) {
       const random = parseInt(Math.random() * 20);
