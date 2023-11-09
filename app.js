@@ -20,6 +20,7 @@ const images = async (imageName) => {
 bot.on("message", async (msg) => {
   const chatId = msg.chat.id;
   const image = await images(msg.text);
+  console.log(msg);
   if (msg.text !== "/start") {
     for (let i = 0; i < 5; i++) {
       const random = parseInt(Math.random() * 20);
