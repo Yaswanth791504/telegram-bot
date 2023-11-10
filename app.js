@@ -11,7 +11,7 @@ const bot = new TelegramBot("6468514456:AAFBsZLpkcW-Cce9QvzaIom5eh1IwVXw6n4", {
 
 const images = async (imageName) => {
   const imagedata = await fetch(
-    `https://serpapi.com/search.json?api_key=12436796465e5f07798ace041c98ae480b7cabfff3b6630f7ec2343fbb57e324&engine=google_images&q=${imageName}&location=Austin,+TX,+Texas,+United+States`
+    `https://serpapi.com/search.json?api_key=8bd100d7d6257b9d3baf75a8c1f9f17851052a5adea916f9c5163925b7738179&engine=google_images&q=${imageName}&location=Austin,+TX,+Texas,+United+States`
   );
   const jsonData = await imagedata.json();
   const links = jsonData.images_results.map((doc) => doc.original);
